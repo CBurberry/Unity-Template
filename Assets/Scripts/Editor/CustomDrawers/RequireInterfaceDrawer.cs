@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEditor;
-using PlayingField.Utility;
+using Utility;
 
-namespace PlayingField.Editor.Utility
+namespace Editor.Utility
 {
     /// <summary>
     /// Drawer for the RequireInterface attribute.

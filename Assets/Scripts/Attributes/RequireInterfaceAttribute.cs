@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace PlayingField.Utility
+namespace Utility
 {
     /// <summary>
     /// Attribute that require implementation of the provided interface.
