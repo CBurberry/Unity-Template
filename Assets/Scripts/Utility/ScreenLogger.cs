@@ -65,7 +65,7 @@ namespace Utility
         Queue<TimedLog> myLogQueue = new Queue<TimedLog>();
         bool logQueueLocked = false;
 
-        private ScreenLogger instance;
+        private static ScreenLogger instance;
 
         private void Awake()
         {
