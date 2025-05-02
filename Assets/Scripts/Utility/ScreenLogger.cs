@@ -27,7 +27,11 @@ namespace Utility
         private bool showLogType = false;
 
         [SerializeField]
-        [Tooltip("Screen position offset (from top-left corner)")]
+        [Tooltip("Normalized screen pivot position for log offset")]
+        private Vector2 normalizedPivot = Vector2.zero;
+
+        [SerializeField]
+        [Tooltip("Screen position offset (from pivot vector, default top-left)")]
         private Vector2 offset = new Vector2(10f, 10f);
 
         #region Colors
@@ -61,7 +65,7 @@ namespace Utility
         Queue<TimedLog> myLogQueue = new Queue<TimedLog>();
         bool logQueueLocked = false;
 
-        private ScreenLogger instance;
+        private static ScreenLogger instance;
 
         private void Awake()
         {
@@ -192,7 +196,9 @@ namespace Utility
 
         private void OnGUI()
         {
-            GUILayout.BeginArea(new Rect(offset.x, offset.y, 1000f, 1000f));
+            float absolutePivotX = normalizedPivot.x * Screen.width;
+            float absolutePivotY = normalizedPivot.y * Screen.height;
+            GUILayout.BeginArea(new Rect(absolutePivotX + offset.x, absolutePivotY + offset.y, Screen.width, Screen.height));
             GUIStyle style = new GUIStyle();
             style.richText = true;
             GUILayout.Label(myLog, style);
